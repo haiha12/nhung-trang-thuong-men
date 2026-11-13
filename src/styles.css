@@ -327,3 +327,132 @@ button:disabled { cursor: not-allowed; opacity: .4; }
   }
 }
 }
+
+/* ===== Giao diện pastel dịu nhẹ cho Những Trang Thương Mến ===== */
+:root {
+  --ink: #51404a;
+  --muted: #927d8d;
+  --paper: #fffaf7;
+  --paper-deep: #f8e9e8;
+  --brown: #b87988;
+  --line: rgba(184, 121, 136, .24);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(245, 190, 204, .48), transparent 42%),
+    radial-gradient(ellipse at 88% 18%, rgba(205, 194, 235, .42), transparent 42%),
+    radial-gradient(ellipse at 78% 88%, rgba(188, 220, 210, .48), transparent 45%),
+    #f7edf0;
+}
+
+.reader-toolbar { color: #806b7d; }
+.toolbar-brand span { color: #c184a1; }
+.icon-button, .text-button {
+  border-color: #e4cbd7;
+  background: rgba(255, 250, 250, .82);
+  color: #76596d;
+}
+.paper-page {
+  border-color: #ead5dc;
+  background:
+    linear-gradient(90deg, rgba(190, 139, 163, .07), transparent 5%, transparent 95%, rgba(190, 139, 163, .05)),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(190, 139, 163, .035) 32px),
+    var(--paper);
+}
+.page-content h1 { color: #594653; }
+.page-content h1 i { color: #b87998; }
+.page-content p { color: #685563; }
+.eyebrow { color: #aa8198; }
+.contents-item { border-bottom-color: #e7d2df; color: #604c60; }
+.contents-index, .contents-motif { color: #b77e9e; }
+.contents-name small { color: #a18b9d; }
+.taped-note { background: #f8e8cf; color: #876b69; }
+.teacher-quote { background: #f8eaf0; color: #88677d; }
+.memory-note { background: #f6edf4; }
+.gratitude-letter { background: #f0effa; border-color: #d8d1eb; }
+.quote-card { background: #f8e6ed; color: #795b70; }
+.quote-card:nth-child(even) { background: #e9edf8; }
+.greeting-card { background: #fffdfd; }
+.chapter-ending { color: #ad7895 !important; }
+.page-controls button {
+  border-color: #e4cbd7;
+  background: #fff8fa;
+  color: #76596d;
+}
+.toc-modal { background: #fff8f8; border-color: #ead5dc; }
+.toc-row { border-bottom-color: #ead5dc; }
+.admin-shell { background: #f7edf0; }
+.login-panel, .admin-panel { background: #fffaf8; border-color: #ead5dc; }
+.primary-button { background: #a96f89; color: #fff9fb; }
+.secondary-button, .tiny-button { background: #f7eaf0; color: #795b70; border-color: #e6cedb; }
+.notice { background: #f8eaf0; color: #80596e; }
+
+/* Khung ảnh polaroid ở góc phải đầu mỗi chương */
+.teacher-heading { align-items: flex-start; }
+.teacher-heading > div:first-child { min-width: 0; flex: 1; }
+.photo-frame-4x6 {
+  position: relative;
+  top: auto;
+  right: auto;
+  display: block;
+  flex: 0 0 clamp(104px, 16vw, 138px);
+  width: clamp(104px, 16vw, 138px);
+  aspect-ratio: 2 / 3;
+  padding: 6px 6px 18px;
+  border: 0;
+  border-radius: 2px;
+  background: #fffdfd;
+  box-shadow: 0 7px 18px rgba(107, 72, 91, .18);
+  transform: rotate(3deg);
+  overflow: visible;
+  cursor: zoom-in;
+}
+.photo-frame-4x6 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1px;
+  filter: saturate(.88) contrast(.97);
+  background: #f3e6ed;
+}
+.photo-frame-4x6::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 43px;
+  height: 15px;
+  background: rgba(226, 207, 191, .72);
+  box-shadow: 0 1px 3px rgba(70, 50, 60, .08);
+  z-index: 2;
+}
+.photo-frame-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(145deg, #f8e7ef, #eeebfa 55%, #e4f1ec);
+  color: #b17c9c;
+  cursor: default;
+  text-align: center;
+}
+.photo-frame-empty span { font: 34px 'Cormorant Garamond', serif; }
+.photo-frame-empty small {
+  font: 11px/1.4 'Be Vietnam Pro', sans-serif;
+  color: #947b91;
+}
+
+@media (max-width: 700px) {
+  .photo-frame-4x6 {
+    flex-basis: 88px;
+    width: 88px;
+    padding: 4px 4px 13px;
+  }
+  .teacher-heading { gap: 12px; }
+  .teacher-heading h1 { font-size: clamp(29px, 8vw, 39px); }
+  .teacher-page { padding-top: 28px; }
+}
