@@ -169,7 +169,24 @@ function TeacherPage({ teacher, onImage }: { teacher: TeacherChapter; onImage: (
         <h1>{teacher.name}</h1>
         <span className="subject-pill">{teacher.subject}</span>
       </div>
-      {teacher.portrait_path && <div className="portrait-placeholder"><span>Ảnh chân dung</span></div>}
+      {teacher.cards.find(card => card.imageUrl)?.imageUrl ? (
+        <button
+          type="button"
+          className="photo-frame-4x6"
+          onClick={() => onImage(teacher.cards.find(card => card.imageUrl)!.imageUrl!)}
+          aria-label={`Phóng to ảnh kỷ niệm của ${teacher.name}`}
+        >
+          <img
+            src={teacher.cards.find(card => card.imageUrl)!.imageUrl!}
+            alt={`Ảnh kỷ niệm trong chương ${teacher.name}`}
+          />
+        </button>
+      ) : (
+        <div className="photo-frame-4x6 photo-frame-empty" aria-label="Khung ảnh kỷ niệm">
+          <span>♡</span>
+          <small>Một góc<br/>kỷ niệm</small>
+        </div>
+      )}
     </div>
     {teacher.intro && <p className="teacher-intro">{teacher.intro}</p>}
     {teacher.quote_intro && <blockquote className="teacher-quote">“{teacher.quote_intro}”</blockquote>}
